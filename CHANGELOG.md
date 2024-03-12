@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.9.0] - 2024-03-15
+- Remove electron
+- Optimize for server build/Docker
 
 ## [0.8.5] - 2019-10-10
 ### Added

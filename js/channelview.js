@@ -49,6 +49,16 @@ function updateRuntime(slotSelector, data) {
   slotSelector.querySelector('p.runtime').innerHTML = data.runtime;
 }
 
+function updatePowerlock(slotSelector, data) {
+  if (data.power_lock === 'ON') {
+    slotSelector.querySelector('p.powerlock').style.display = 'block';
+  } else {
+    slotSelector.querySelector('p.powerlock').style.display = 'none';
+  }
+
+
+}
+
 function updateQuality(slotSelector, data) {
   const QualityTable = {
     0: '&#9675;&#9675;&#9675;&#9675;&#9675;',
@@ -208,6 +218,9 @@ function updateSelector(slotSelector, data) {
   updateCheck(data, 'frequency', () => {
     updateFrequency(slotSelector, data);
   });
+  updateCheck(data, 'power_lock', () => {
+    updatePowerlock(slotSelector, data);
+  });
 }
 
 
@@ -242,6 +255,9 @@ export function updateViewOnly(slotSelector, data) {
   if ('ip' in data) {
     updateIP(slotSelector, data);
   }
+  if ('power_lock' in data) {
+    updatePowerlock(slotSelector, data);
+  }
 }
 
 export function updateSlot(data) {
@@ -273,16 +289,19 @@ export function renderDisplayList(dl) {
   dl.forEach((e) => {
     let t;
     if (e !== 0) {
-      t = document.getElementById('column-template').content.cloneNode(true);
-      t.querySelector('div.col-sm').id = 'slot-' + tx[e].slot;
-      updateViewOnly(t, tx[e]);
-      charts[tx[e].slot] = initChart(t, tx[e]);
+      if (typeof tx[e] !== 'undefined') {
+        t = document.getElementById('column-template').content.cloneNode(true);
+        t.querySelector('div.col-sm').id = 'slot-' + tx[e].slot;
+        updateViewOnly(t, tx[e]);
+        charts[tx[e].slot] = initChart(t, tx[e]);
+        document.getElementById('micboard').appendChild(t);
+      }
     } else {
       t = document.getElementById('column-template').content.cloneNode(true);
       t.querySelector('p.name').innerHTML = 'BLANK';
       t.querySelector('.col-sm').classList.add('blank');
+      document.getElementById('micboard').appendChild(t);
     }
-    document.getElementById('micboard').appendChild(t);
   });
 
   infoToggle();

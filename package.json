@@ -6,7 +6,7 @@
   "scripts": {
     "server": "python py/micboard.py",
     "binary": "pyinstaller py/micboard.spec",
-    "build": "node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
+    "build": "node node_modules/webpack/bin/webpack.js --progress --config=webpack.config.js",
     "static": "python -m http.server 8058"
   },
   "private": true,
@@ -21,30 +21,26 @@
   "homepage": "https://github.com/josephdadams/micboard",
   "dependencies": {
     "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/preset-react": "^7.0.0",
-    "@ibm/plex": "^1.4.1",
+    "@ibm/plex": "^6.4.0",
     "@shopify/draggable": "^1.0.0-beta.8",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
-    "bootstrap-icons": "^1.0.0-alpha2",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "jquery": "^3.4.1",
-    "node-gyp": "^8.0.0",
-    "sass": "^1.55.0",
+    "node-sass": "^9.0.0",
     "popper.js": "^1.15.0",
     "qrcode": "^1.4.1",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^14.1.1",
     "smoothie": "^1.35.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8",
+    "webpack": "^5.90.3",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "webpack-cli": "^5.1.4"
   }
 }

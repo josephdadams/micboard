@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-
+const { version } = require('./package.json');
 
 module.exports = {
   devtool: 'source-map',
@@ -22,7 +22,7 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new webpack.DefinePlugin({
-      VERSION: JSON.stringify(require("./package.json").version)
+      VERSION: JSON.stringify(version),
     }),
   ],
   module: {
@@ -57,15 +57,6 @@ module.exports = {
             publicPath: 'static/fonts/',
           },
         }],
-      },
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          // presets: ['env', 'react']
-        },
       },
     ],
   },
